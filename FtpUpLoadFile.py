@@ -15,9 +15,9 @@ import configparser
 import logging.handlers
 from logging.handlers import RotatingFileHandler
 
-########################################################################################################################
+##########################
 FileNotFounderror_return=0
-########################################################################################################################
+##########################
 
 def Zip(zipname):
     try:
@@ -86,7 +86,7 @@ def UpLoadLog():
         ftp.quit()
     #ftp.retrbinary("RETR %s"%filename,open('./My.zip','wb').write)
 
-########################################################################################################################
+######################
 def storCallback(a):
     filesize=os.stat("./%s"%zipname).st_size
 
@@ -110,7 +110,7 @@ def storCallback(a):
     #s1.send(OnLogUploadState_tobridge)
     logging.warning(sendjsontobridge)
     print(OnLogUploadState_tobridge)
-#######################################################################################################################
+######################################
 
 def CopyTree(dir):
 
@@ -166,7 +166,7 @@ def CopyTree(dir):
         print('FileNotFound failed' + str(e))
 
 
-########################################################################################################################
+######################
 def RotatingFile():
     if os.path.exists('./LOG') == False:
         os.mkdir("./LOG")
@@ -179,7 +179,7 @@ def RotatingFile():
 
     logging.getLogger('').addHandler(Rthandler)
 
-########################################################################################################################
+######################
 def FtpConnect():
     ftpurl=cp.get("url","ftpurl")
     ip = '%s'%ftpurl
@@ -229,7 +229,7 @@ def FtpConnect():
 if __name__=="__main__":
 
     RotatingFile()
-    ####################################################################################################################
+    ##################
     print('come in FtpUpLoadLog success!!!!')
 
     sysargv=sys.argv
@@ -237,7 +237,7 @@ if __name__=="__main__":
     uuid=sysargv[1]
     #procdurename=sysargv[2]
     #print(sysargv[1],type(sysargv[1]),sysargv[2],type(sysargv[2]))
-    ####################################################################################################################
+    ###################
 
     cp=configparser.ConfigParser()
     cp.read("./uploadset.cfg",encoding='utf-8')
@@ -259,7 +259,7 @@ if __name__=="__main__":
     temppath='./4Gyaobao'
     shutil.rmtree('./4Gyaobao',True)
 
-    ####################################################################################################################
+    ##############################
     listdir = []
     listdir.append(pathcode)
     listdir.append(pathcode2)
@@ -272,17 +272,17 @@ if __name__=="__main__":
     #global FileNotFounderror_return
     if FileNotFounderror_return == 0:
 
-        ################################################################################################################
+        ############################
         time.sleep(1)
 
         zipname='Yaobao'+'UpLoadLog'+uuid+'.zip'
-        ############################ss####################################################################################
+        ###########################
         ftp = FTP(timeout=30)
 
         ftp.set_debuglevel(0)
-        ################################################################################################################
+        #########################
         FtpConnect()
-        ################################################################################################################
+        #########################
         Zip(zipname)
         UpLoadLog()
 
