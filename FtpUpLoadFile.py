@@ -41,7 +41,7 @@ def Zip(zipname):
         ftp.quit()
 
 
-#######################################################################################################################
+#########################
 
 uploadprogress = 0
 def UpLoadLog():
@@ -114,19 +114,19 @@ def storCallback(a):
 
 def CopyTree(dir):
 
-    if os.path.exists('./4Gyaobao') == False:
-        os.mkdir("./4Gyaobao")
+    if os.path.exists('./aaa') == False:
+        os.mkdir("./aaa")
 
-    if os.path.exists('./4Gyaobao/assembler') == False:
-        os.mkdir("./4Gyaobao/assembler")
-    if os.path.exists('./4Gyaobao/autogate') == False:
-        os.mkdir("./4Gyaobao/autogate")
-    if os.path.exists('./4Gyaobao/DetectClient') == False:
-        os.mkdir("./4Gyaobao/DetectClient")
-    if os.path.exists('./4Gyaobao/webservice') == False:
-        os.mkdir("./4Gyaobao/webservice")
-    if os.path.exists('./4Gyaobao/pppd') == False:
-        os.mkdir("./4Gyaobao/pppd")
+    if os.path.exists('./aaa/assembler') == False:
+        os.mkdir("./aaa/assembler")
+    if os.path.exists('./aaa/autogate') == False:
+        os.mkdir("./aaa/autogate")
+    if os.path.exists('./aaa/DetectClient') == False:
+        os.mkdir("./aaa/DetectClient")
+    if os.path.exists('./aaa/webservice') == False:
+        os.mkdir("./aaa/webservice")
+    if os.path.exists('./aaa/pppd') == False:
+        os.mkdir("./aaa/pppd")
 
     try:
         for i in range(len(dir)):
@@ -140,15 +140,15 @@ def CopyTree(dir):
 
                     if (timedifferent < datetime.timedelta(days=7)):
                             if i==0:
-                                shutil.copyfile(os.path.join(dirpath, filename), './4Gyaobao/assembler/%s' % filename)
+                                shutil.copyfile(os.path.join(dirpath, filename), './aaa/assembler/%s' % filename)
                             if i==1:
-                                shutil.copyfile(os.path.join(dirpath, filename), './4Gyaobao/autogate/%s' % filename)
+                                shutil.copyfile(os.path.join(dirpath, filename), './aaa/autogate/%s' % filename)
                             if i==2:
-                                shutil.copyfile(os.path.join(dirpath, filename), './4Gyaobao/DetectClient/%s' % filename)
+                                shutil.copyfile(os.path.join(dirpath, filename), './aaa/DetectClient/%s' % filename)
                             if i==3:
-                                shutil.copyfile(os.path.join(dirpath, filename), './4Gyaobao/webservice/%s' % filename)
+                                shutil.copyfile(os.path.join(dirpath, filename), './aaa/webservice/%s' % filename)
                             if i==4:
-                                shutil.copyfile(os.path.join(dirpath, filename), './4Gyaobao/pppd/%s' % filename)
+                                shutil.copyfile(os.path.join(dirpath, filename), './aaa/pppd/%s' % filename)
 
     except FileNotFoundError as e:
         global FileNotFounderror_return
@@ -256,8 +256,8 @@ if __name__=="__main__":
 
    # temppath=win32api.GetTempPath()
 
-    temppath='./4Gyaobao'
-    shutil.rmtree('./4Gyaobao',True)
+    temppath='./aaa'
+    shutil.rmtree('./aaa',True)
 
     ##############################
     listdir = []
@@ -275,7 +275,7 @@ if __name__=="__main__":
         ############################
         time.sleep(1)
 
-        zipname='Yaobao'+'UpLoadLog'+uuid+'.zip'
+        zipname='wnty'+'UpLoad'+uuid+'.zip'
         ###########################
         ftp = FTP(timeout=30)
 
